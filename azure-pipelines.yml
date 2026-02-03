@@ -1,0 +1,29 @@
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    exclude:
+      - dev
+      - azure-pipelines.yml
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.SourcesDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'arm-service-connection'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      az storage blob upload-batch \
+        --account-name stagingstorage20260203 \
+        --source '$(Build.SourcesDirectory)' \
+        --destination '$web' \
+        --overwrite true
