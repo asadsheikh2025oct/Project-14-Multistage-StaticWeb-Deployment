@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Cloud Explorer | Practice Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-cloud"></i>
+                <span>AzureStatic</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Azure Static Website</h1>
+            <p class="subtitle">Hosted on Azure Storage • Blazing Fast • Cost Effective</p>
+            <div class="hero-animation">
+                <div class="cloud-container">
+                    <div class="cloud cloud-1"><i class="fas fa-cloud"></i></div>
+                    <div class="cloud cloud-2"><i class="fas fa-cloud"></i></div>
+                    <div class="cloud cloud-3"><i class="fas fa-cloud"></i></div>
+                </div>
+                <div class="server-rack">
+                    <div class="server"></div>
+                    <div class="server active"></div>
+                    <div class="server"></div>
+                </div>
+            </div>
+            <div class="cta-buttons">
+                <a href="#features" class="btn primary-btn">Explore Features</a>
+                <a href="#contact" class="btn secondary-btn">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Azure Static Websites?</h2>
+            <p class="section-subtitle">Perfect for your practice projects</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Super Fast</h3>
+                    <p>Content delivered globally through Azure's CDN with low latency and high performance.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>Cost Effective</h3>
+                    <p>Pay only for storage and bandwidth. No compute costs for static content!</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure</h3>
+                    <p>Built-in HTTPS, custom domains, and integration with Azure security services.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Easy Deployment</h3>
+                    <p>Deploy via Azure Portal, CLI, or integrate with GitHub Actions for CI/CD.</p>
+                </div>
+            </div>
+            
+            <!-- Interactive Demo -->
+            <div class="demo-container">
+                <h3>Deployment Status</h3>
+                <div class="deployment-tracker">
+                    <div class="step completed">
+                        <div class="step-number">1</div>
+                        <p>Create Storage Account</p>
+                    </div>
+                    <div class="step active">
+                        <div class="step-number">2</div>
+                        <p>Enable Static Website</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <p>Upload Files</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <p>Go Live!</p>
+                    </div>
+                </div>
+                <button id="deployBtn" class="btn primary-btn">
+                    <i class="fas fa-rocket"></i> Simulate Deployment
+                </button>
+                <div id="deployStatus" class="status-message"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About This Project</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>This is a practice project demonstrating how to host static websites on Azure Storage.</p>
+                    <p>It showcases a professional yet fun design with interactive elements to make learning Azure more engaging.</p>
+                    <div class="tech-stack">
+                        <h4>Technology Stack:</h4>
+                        <div class="tech-icons">
+                            <span class="tech-icon"><i class="fab fa-html5"></i> HTML5</span>
+                            <span class="tech-icon"><i class="fab fa-css3-alt"></i> CSS3</span>
+                            <span class="tech-icon"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="tech-icon"><i class="fab fa-microsoft"></i> Azure</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="azure-logo">
+                        <i class="fab fa-microsoft"></i>
+                        <span>Azure</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Have questions about Azure Static Websites?</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <h4>Azure Portal</h4>
+                        <p>portal.azure.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-book"></i>
+                        <h4>Documentation</h4>
+                        <p>docs.microsoft.com/azure/storage</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-comments"></i>
+                        <h4>Community</h4>
+                        <p>Join Azure Developer Community</p>
+                    </div>
+                </div>
+                
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="4" placeholder="Your message about Azure static websites..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-cloud"></i>
+                    <span>AzureStaticPractice</span>
+                </div>
+                <p class="footer-text">
+                    This static website is hosted on Azure Blob Storage as a practice project.
+                    Explore the possibilities of cloud hosting!
+                </p>
+                <div class="footer-links">
+                    <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="#"><i class="fab fa-microsoft"></i> Azure Docs</a>
+                    <a href="#"><i class="fab fa-stack-overflow"></i> Stack Overflow</a>
+                </div>
+                <div class="counter">
+                    <i class="fas fa-eye"></i>
+                    <span id="visitCount">0</span> visitors simulated
+                </div>
+            </div>
+            <p class="copyright">© 2024 Azure Static Website Practice Project</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
