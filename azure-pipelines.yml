@@ -4,26 +4,69 @@ trigger:
       - main
   paths:
     exclude:
-      - dev
       - azure-pipelines.yml
+
+pr:
+  branches:
+    include:
+      - main
 
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.SourcesDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
-- task: AzureCLI@2
-  inputs:
-    azureSubscription: 'arm-service-connection'
-    scriptType: 'bash'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      az storage blob upload-batch \
-        --account-name stagingstorage20260203 \
-        --source '$(Build.SourcesDirectory)' \
-        --destination '$web' \
-        --overwrite true
+stages:
+- stage: Build
+  jobs:
+    - job: BuildJob
+      steps:
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: '$(Build.SourcesDirectory)'
+          ArtifactName: 'drop'
+          publishLocation: 'Container'
+                 
+- stage: DeployToStaging
+  jobs:
+    - deployment: StagingDeployment
+      environment: 'Staging'
+      strategy:
+        runOnce:
+          deploy:
+            pool:
+              vmImage: 'ubuntu-latest'
+            steps:
+              - task: AzureCLI@2
+                displayName: 'deploy to staging'
+                inputs:
+                  azureSubscription: 'arm-service-connection'
+                  scriptType: 'bash'
+                  scriptLocation: 'inlineScript'
+                  inlineScript: |
+                    az storage blob upload-batch \
+                      --account-name stagingstorage20260203 \
+                      --source '$(Pipeline.Workspace)/drop' \
+                      --destination '$web' \
+                      --overwrite true
+
+- stage: DeployToProd
+  jobs:
+    - deployment: ProdDeployment
+      environment: 'Production'
+      strategy:
+        runOnce:
+          deploy:
+            pool:
+              vmImage: 'ubuntu-latest'
+            steps:
+              - task: AzureCLI@2
+                displayName: 'deploy to prod'
+                inputs:
+                  azureSubscription: 'arm-service-connection'
+                  scriptType: 'bash'
+                  scriptLocation: 'inlineScript'
+                  inlineScript: |
+                    az storage blob upload-batch \
+                      --account-name prodstorage20260203 \
+                      --source '$(Pipeline.Workspace)/drop' \
+                      --destination $web
+                      --overwrite true
