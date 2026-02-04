@@ -140,8 +140,8 @@ function simulateVisitorCounter() {
     let count = localStorage.getItem('visitorCount');
     
     if (!count) {
-        // Start with a random number between 100 and 500 for realism
-        count = Math.floor(Math.random() * 400) + 100;
+        // Start with a random number between 1000 and 2000 for realism
+        count = Math.floor(Math.random() * 1000) + 1000;
     } else {
         count = parseInt(count);
     }
