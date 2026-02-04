@@ -68,5 +68,5 @@ stages:
                     az storage blob upload-batch \
                       --account-name prodstorage20260203 \
                       --source '$(Pipeline.Workspace)/drop' \
-                      --destination $web
+                      --destination $web \
                       --overwrite true
