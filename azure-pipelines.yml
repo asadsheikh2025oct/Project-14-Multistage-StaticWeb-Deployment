@@ -6,10 +6,7 @@ trigger:
     exclude:
       - azure-pipelines.yml
 
-pr:
-  branches:
-    include:
-      - main
+
 
 pool:
   vmImage: ubuntu-latest
@@ -26,6 +23,8 @@ stages:
           publishLocation: 'Container'
                  
 - stage: DeployToStaging
+  dependsOn: Build
+  condition: succeeded()
   jobs:
     - deployment: StagingDeployment
       environment: 'Staging'
